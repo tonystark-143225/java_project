@@ -36,6 +36,18 @@ pipeline:
                       ls
                       #cd d:\java_project
                       mvn clean package
+              - step:
+                  type: Run
+                  name: explore_artifact_war_jar
+                  identifier: explore_artifact_war_jar
+                  spec:
+                    connectorRef: docker_vamsiharikanth
+                    image: maven:4.0.0-rc-5-sapmachine-21
+                    shell: Sh
+                    command: |-
+                      ls
+                      cd target
+                      exit 1
           platform:
             os: Linux
             arch: Amd64
