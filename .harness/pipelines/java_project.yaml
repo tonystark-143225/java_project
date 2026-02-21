@@ -21,14 +21,6 @@ pipeline:
           caching:
             enabled: true
             override: false
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: account.test
-              namespace: default
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
           execution:
             steps:
               - step:
@@ -37,9 +29,19 @@ pipeline:
                   identifier: prerqstest
                   spec:
                     connectorRef: docker_vamsiharikanth
-                    image: ubuntu:latest
+                    image: eclipse-temurin:11-jre-ubi9-minimal
                     shell: Sh
-                    command: echo "test"
+                    command: |-
+                      pwd
+                      cd d:\java_project
+                      mvn clean package
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec:
+              harnessImageConnectorRef: docker_vamsiharikanth
   notificationRules:
     - name: ai_selfheal
       identifier: ai_selfheal
