@@ -29,7 +29,7 @@ pipeline:
                   identifier: prerqstest
                   spec:
                     connectorRef: docker_vamsiharikanth
-                    image: eclipse-temurin:11-jre-ubi9-minimal
+                    image: maven:4.0.0-rc-5-sapmachine-21
                     shell: Sh
                     command: |-
                       pwd
