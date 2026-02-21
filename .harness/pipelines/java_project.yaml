@@ -33,7 +33,8 @@ pipeline:
                     shell: Sh
                     command: |-
                       pwd
-                      cd d:\java_project
+                      ls
+                      #cd d:\java_project
                       mvn clean package
           platform:
             os: Linux
