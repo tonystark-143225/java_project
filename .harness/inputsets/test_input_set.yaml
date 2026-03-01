@@ -1,0 +1,14 @@
+inputSet:
+  pipeline:
+    identifier: java_project
+    properties:
+      ci:
+        codebase:
+          build:
+            spec:
+              branch: main
+            type: branch
+  name: test_input_set.yaml
+  identifier: test_input_setyaml
+  orgIdentifier: default
+  projectIdentifier: agents
