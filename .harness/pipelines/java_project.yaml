@@ -66,4 +66,5 @@ pipeline:
           webhookUrl: https://app.harness.io/gateway/pipeline/api/webhook/custom/DFKUW4enQ7-pLZoNv35xQw/v3?accountIdentifier=CvYTxb5IRXasJVAqLJDonA&orgIdentifier=default&projectIdentifier=agents&pipelineIdentifier=self_heal_solution&triggerIdentifier=ai_heal
           headers:
             name: vamsi
+            sequenceId: <+pipeline.sequenceId>
       enabled: true
