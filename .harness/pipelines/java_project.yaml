@@ -69,4 +69,5 @@ pipeline:
           headers:
             name: vamsi
             sequenceId: <+pipeline.sequenceId>
+            repo: <+pipeline.properties.ci.codebase.repoName>
       enabled: true
