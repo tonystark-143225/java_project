@@ -56,7 +56,7 @@ pipeline:
             spec:
               harnessImageConnectorRef: docker_vamsiharikanth
         delegateSelectors:
-          - docker-delegate
+          - vamsi
   notificationRules:
     - name: ai_selfheal
       identifier: ai_selfheal
