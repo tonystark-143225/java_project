@@ -1,0 +1,20 @@
+pipeline:
+  name: java_project
+  identifier: java_project
+  projectIdentifier: agents
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: github_tony
+        repoName: java_project
+        build: <+input>
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: tr... [REDACTED: full YAML, but with the 'exit 1' line removed from the 'explore_artifact_war_jar' step script] ...
