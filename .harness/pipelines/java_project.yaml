@@ -50,6 +50,9 @@ pipeline:
                     command: |-
                       ls
                       exit 1
+                  when:
+                    stageStatus: Success
+                    condition: "false"
               - step:
                   type: Run
                   name: Run_5
@@ -62,7 +65,6 @@ pipeline:
                       cat dummy.txt
                   when:
                     stageStatus: Success
-                    condition: "false"
               - step:
                   type: Run
                   name: rerun_demo
