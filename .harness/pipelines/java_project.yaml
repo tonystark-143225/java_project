@@ -47,8 +47,40 @@ pipeline:
                     command: |-
                       ls
                       cd target
-                      cat dummy.txt
                       exit 1
+              - step:
+                  type: Run
+                  name: Run_5
+                  identifier: Run_5
+                  spec:
+                    shell: Sh
+                    command: |-
+                      pwd
+                      ls
+                      cat dummy.txt
+                  when:
+                    stageStatus: Success
+                    condition: "false"
+              - step:
+                  type: Run
+                  name: rerun_demo
+                  identifier: rerun_demo
+                  spec:
+                    shell: Sh
+                    command: curl --max-time 5 http://10.255.255.1/vamsi
+                  when:
+                    stageStatus: Success
+                    condition: "false"
+              - step:
+                  type: Run
+                  name: secret_demo
+                  identifier: secret_demo
+                  spec:
+                    shell: Sh
+                    command: "echo \"DB URL is: <+secrets.getValue(\"DATABASE_URL\")>\""
+                  when:
+                    stageStatus: Success
+                    condition: "false"
           platform:
             os: Linux
             arch: Amd64
