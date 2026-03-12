@@ -18,95 +18,13 @@ pipeline:
         type: CI
         spec:
           cloneCodebase: true
-          caching:
-            enabled: true
-            override: false
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: prerqs-test
-                  identifier: prerqstest
-                  spec:
-                    connectorRef: docker_vamsiharikanth
-                    image: maven:4.0.0-rc-5-sapmachine-21
-                    shell: Sh
-                    command: |-
-                      pwd
-                      ls
-                      #cd d:\java_project
-                      mvn clean package
-                  when:
-                    stageStatus: Success
-                    condition: "false"
-              - step:
-                  type: Run
-                  name: explore_artifact_war_jar
-                  identifier: explore_artifact_war_jar
-                  spec:
-                    connectorRef: docker_vamsiharikanth
-                    image: maven:4.0.0-rc-5-sapmachine-21
-                    shell: Sh
-                    command: |-
-                      ls
-                      exit 1
-                  when:
-                    stageStatus: Success
-                    condition: "false"
-              - step:
-                  type: Run
-                  name: Run_5
-                  identifier: Run_5
-                  spec:
-                    shell: Sh
-                    command: |-
-                      pwd
-                      ls
-                      cat dummy.txt
-                  when:
-                    stageStatus: Success
-                    condition: "false"
-              - step:
-                  type: Run
-                  name: rerun_demo
-                  identifier: rerun_demo
-                  spec:
-                    shell: Sh
-                    command: curl --max-time 5 http://10.255.255.1/vamsi
-                  when:
-                    stageStatus: Success
-                    condition: "false"
-              - step:
-                  type: Run
-                  name: secret_demo
-                  identifier: secret_demo
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "DATABASE_URL: <+secrets.getValue("DATABASE_URL")>"
-                      #echo "DB_URL: <+secrets.getValue("DATABASE_URL")>"
-                  when:
-                    stageStatus: Success
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Docker
-            spec:
-              harnessImageConnectorRef: docker_vamsiharikanth
-        delegateSelectors:
-          - docker-delegate
-  notificationRules:
-    - name: ai_selfheal
-      identifier: ai_selfheal
-      pipelineEvents:
-        - type: PipelineFailed
-      notificationMethod:
-        type: Webhook
-        spec:
-          webhookUrl: https://app.harness.io/gateway/pipeline/api/webhook/custom/DFKUW4enQ7-pLZoNv35xQw/v3?accountIdentifier=CvYTxb5IRXasJVAqLJDonA&orgIdentifier=default&projectIdentifier=agents&pipelineIdentifier=self_heal_solution&triggerIdentifier=ai_heal
-          headers:
-            name: vamsi
-            sequenceId: <+pipeline.sequenceId>
-            repo: <+pipeline.properties.ci.codebase.repoName>
-      enabled: true
+          steps:
+            - step:
+                type: Run
+                name: secret_demo
+                identifier: secret_demo
+                spec:
+                  shell: Sh
+                  command: |-
+                    echo "DATABASE_URL: $DATABASE_URL"
+                    #echo "DB_URL: $DATABASE_URL"
