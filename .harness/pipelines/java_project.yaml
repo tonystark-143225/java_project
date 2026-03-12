@@ -75,6 +75,7 @@ pipeline:
                     command: curl --max-time 5 http://10.255.255.1/vamsi
                   when:
                     stageStatus: Success
+                    condition: "false"
               - step:
                   type: Run
                   name: secret_demo
@@ -84,7 +85,6 @@ pipeline:
                     command: "echo \"DB URL is: <+secrets.getValue(\"DATABASE_URL\")>\""
                   when:
                     stageStatus: Success
-                    condition: "false"
           platform:
             os: Linux
             arch: Amd64
