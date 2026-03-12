@@ -82,7 +82,7 @@ pipeline:
                   identifier: secret_demo
                   spec:
                     shell: Sh
-                    command: "echo \"DB URL is: <+secrets.getValue(\"DATABASE_URL\")>\""
+                    command: "echo \"DATABASE_URL: <+secrets.getValue(\"DATABASE_URL\")>\""
                   when:
                     stageStatus: Success
           platform:
