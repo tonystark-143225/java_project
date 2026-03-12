@@ -36,6 +36,9 @@ pipeline:
                       ls
                       #cd d:\java_project
                       mvn clean package
+                  when:
+                    stageStatus: Success
+                    condition: "false"
               - step:
                   type: Run
                   name: explore_artifact_war_jar
@@ -46,7 +49,6 @@ pipeline:
                     shell: Sh
                     command: |-
                       ls
-                      cd target
                       exit 1
               - step:
                   type: Run
