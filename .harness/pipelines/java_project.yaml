@@ -84,7 +84,8 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      echo "DATABASE_URL: <+secrets.getValue("DATABASE_URL")>"
+                      echo "<+pipeline.variables.databaseurl>"
+                      #echo "DATABASE_URL: <+secrets.getValue("DATABASE_URL")>"
                       #echo "DB_URL: <+secrets.getValue("DATABASE_URL")>"
                   when:
                     stageStatus: Success
