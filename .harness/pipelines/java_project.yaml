@@ -38,6 +38,7 @@ pipeline:
                       mvn clean package
                   when:
                     stageStatus: Success
+                    condition: "false"
               - step:
                   type: Run
                   name: explore_artifact_war_jar
@@ -74,7 +75,6 @@ pipeline:
                     command: curl --max-time 5 http://10.255.255.1/vamsi
                   when:
                     stageStatus: Success
-                    condition: "false"
               - step:
                   type: Run
                   name: secret_demo
