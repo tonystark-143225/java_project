@@ -79,6 +79,25 @@ pipeline:
                     condition: "false"
               - step:
                   type: Run
+                  name: variable_demo
+                  identifier: variable_demo
+                  spec:
+                    shell: Sh
+                    command: |-
+                      echo "Reading environment config..."
+                       
+                       # This variable does NOT exist in Harness — agent must create it
+                      TARGET_ENV="<+variable.DEPLOY_ENV>"
+                       
+                      if [ -z "$TARGET_ENV" ]; then
+                        echo "ERROR: variable not found: DEPLOY_ENV"
+                        exit 1
+                      fi
+                       
+                      echo "Deploying to environment: $TARGET_ENV"
+                      echo "Build complete for $TARGET_ENV"
+              - step:
+                  type: Run
                   name: secret_demo
                   identifier: secret_demo
                   spec:
