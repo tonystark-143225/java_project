@@ -35,7 +35,7 @@ pipeline:
                       pwd
                       ls
                       #cd d:\java_project
-                      #mvn clean package
+                      mvn clean package
                   when:
                     stageStatus: Success
               - step:
@@ -51,6 +51,7 @@ pipeline:
                       exit 1
                   when:
                     stageStatus: Success
+                    condition: "false"
               - step:
                   type: Run
                   name: Run_5
