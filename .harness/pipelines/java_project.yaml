@@ -51,7 +51,6 @@ pipeline:
                       exit 1
                   when:
                     stageStatus: Success
-                    condition: "false"
               - step:
                   type: Run
                   name: Run_5
