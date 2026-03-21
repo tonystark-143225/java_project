@@ -102,7 +102,7 @@ pipeline:
       notificationMethod:
         type: Webhook
         spec:
-          webhookUrl: https://app.harness.io/gateway/pipeline/api/webhook/custom/DFKUW4enQ7-pLZoNv35xQw/v3?accountIdentifier=CvYTxb5IRXasJVAqLJDonA&orgIdentifier=default&projectIdentifier=agents&pipelineIdentifier=self_heal_solution&triggerIdentifier=ai_heal
+          webhookUrl: https://app.harness.io/gateway/pipeline/api/webhook/custom/a4sGfzIyT1ib8nt3mQZdNw/v3?accountIdentifier=CvYTxb5IRXasJVAqLJDonA&orgIdentifier=default&projectIdentifier=agents&pipelineIdentifier=autohealer&triggerIdentifier=autoheal
           headers:
             name: vamsi
             sequenceId: <+pipeline.sequenceId>
