@@ -38,6 +38,7 @@ pipeline:
                       mvn clean package
                   when:
                     stageStatus: Success
+                    condition: "false"
               - step:
                   type: Run
                   name: explore_artifact_war_jar
@@ -51,6 +52,7 @@ pipeline:
                       exit 1
                   when:
                     stageStatus: Success
+                    condition: "false"
               - step:
                   type: Run
                   name: Run_5
@@ -60,10 +62,10 @@ pipeline:
                     command: |-
                       pwd
                       ls
+                      exit 1
                       cat dummy.txt
                   when:
                     stageStatus: Success
-                    condition: "false"
               - step:
                   type: Run
                   name: rerun_demo
